@@ -1,0 +1,26 @@
+{
+  "source_base_unchanged": true,
+  "model": {
+    "triangle_count_equal": true,
+    "bounds_within_0_0001_blender_units": true,
+    "material_names_equal": true,
+    "source_unchanged": true
+  },
+  "tests_passed": 21,
+  "browser_verified": [
+    "WebGL2 on Mac",
+    "all three wall murals",
+    "five original reference document images",
+    "light toggle changes ceiling illumination",
+    "brightness keyboard control 0 and 100 percent",
+    "four original references in dialog"
+  ],
+  "browser_console_errors": 0,
+  "not_verified": [
+    "Safari",
+    "physical phone",
+    "compact viewport: browser override remained 1280 pixels"
+  ],
+  "html_sha256": "9ead0bd5d823affee054467369c1388ddd4adaa81e0d4ab59ee8575db7e34803",
+  "artwork_provenance": "Built-in image_gen recreation from references; photo gallery is an illustrative interpretation. Exact original references included for comparison."
+}

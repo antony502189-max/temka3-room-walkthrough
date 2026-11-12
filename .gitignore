@@ -1,0 +1,11 @@
+node_modules/
+dist/
+artifacts/
+final/
+.openai/
+.git/
+.DS_Store
+.env
+.env.*
+*.blend1
+__pycache__/

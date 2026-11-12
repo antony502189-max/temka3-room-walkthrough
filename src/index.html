@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ece8df">
+  <meta name="description" content="Прогулка по комнате в 3D. Осматривайтесь, перемещайтесь и выбирайте удобные ракурсы.">
+  <title>Комната 3 · прогулка в 3D</title>
+  <!--ROOM_STYLE-->
+</head>
+<body>
+  <main id="app">
+    <canvas id="scene" tabindex="0" aria-label="Трёхмерная комната. Для перемещения используйте WASD или стрелки, для поворота удерживайте кнопку мыши."></canvas>
+    <header class="topbar">
+      <div class="identity"><span class="mark" aria-hidden="true">⌑</span><div><span class="eyebrow">СВЕТ · ПРИРОДА · ИСТОРИЯ</span><h1>Комната 3<span class="title-dot">.</span></h1></div></div>
+      <nav class="mode-switch" aria-label="Режим просмотра"><button id="walk-mode" class="selected" aria-pressed="true" disabled>Прогулка</button><button id="orbit-mode" aria-pressed="false" disabled>Осмотр</button></nav>
+      <div class="tools"><button id="reset" class="tool-button" title="Вернуться в начало" aria-label="Вернуться в начало" disabled>↺</button><button id="help" class="tool-button" title="Управление" aria-label="Помощь по управлению">?</button><button id="fullscreen" class="tool-button" title="На весь экран" aria-label="На весь экран">⛶</button></div>
+    </header>
+
+    <section class="welcome" id="welcome" aria-labelledby="welcome-title">
+      <div class="welcome-card">
+        <div class="eyebrow"><span class="live-dot"></span> ПРОСТРАНСТВО ДЛЯ ОСМОТРА</div>
+        <h2 id="welcome-title">Знакомая комната.<br>Новое ощущение.</h2>
+        <p>Рисунки по вашим референсам и мягкий свет вдоль потолка. Пройдитесь внутри и сравните пространство с подсветкой и без.</p>
+        <div class="loading" id="loading"><span id="load-text">Подготавливаем комнату…</span><div class="load-track"><i id="load-progress"></i></div></div>
+        <button id="start" class="primary" disabled><span>Начать прогулку</span><span aria-hidden="true">↗</span></button>
+        <div class="start-note">WASD / стрелки — движение<br>Мышь или перетаскивание — взгляд</div>
+      </div>
+      <span class="welcome-caption">КОМНАТА 03 / КОНЦЕПЦИЯ ОФОРМЛЕНИЯ</span>
+    </section>
+
+    <aside class="viewpoints" id="viewpoints-panel" hidden>
+      <div class="panel-caption">ТОЧКИ ОБЗОРА</div>
+      <div id="viewpoints"></div>
+    </aside>
+    <aside id="design-panel" class="design-panel" hidden>
+      <details id="light-details" open><summary>Свет и оформление <span>3000 K</span></summary>
+        <p class="design-note">Мягкий свет вверх, вдоль потолка.</p>
+        <button id="light-toggle" class="light-toggle" aria-pressed="true">Подсветка включена</button>
+        <label class="level-label" for="light-level">Яркость <output id="light-value">75%</output></label>
+        <input id="light-level" type="range" min="0" max="100" value="75" aria-label="Яркость подсветки">
+        <button id="references-open" class="reference-link">Посмотреть референсы <span aria-hidden="true">↗</span></button>
+      </details>
+    </aside>
+    <dialog id="references-dialog" aria-labelledby="references-title">
+      <div class="dialog-top"><span class="eyebrow">ОТ ИДЕИ К ПРОСТРАНСТВУ</span><button id="references-close" class="tool-button" aria-label="Закрыть референсы">×</button></div>
+      <h2 id="references-title">Ваши референсы</h2>
+      <p class="reference-intro">Оригинальные изображения для сравнения с интерьером. Рисунки в модели воссозданы по ним; фотографии на фотостене — иллюстративная версия.</p>
+      <div id="reference-grid"></div>
+    </dialog>
+    <div class="crosshair" id="crosshair" hidden aria-hidden="true"><i></i></div>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+
+    <footer class="bottom-bar" id="bottom-bar" hidden>
+      <div class="mode-label"><span class="live-dot"></span><span id="mode-label">Прогулка внутри</span></div>
+      <div id="walk-hint" class="keyboard-hint"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>движение</span><i></i><span>перетаскивание — взгляд</span></div>
+      <div class="bottom-actions"><button id="capture-mouse" class="text-button">Управлять мышью</button><button id="map-toggle" class="text-button" aria-expanded="false">План комнаты</button></div>
+    </footer>
+
+    <aside class="minimap" id="minimap" hidden aria-label="Ваше положение на плане комнаты"><div class="map-heading">ВЫ ЗДЕСЬ <button id="map-close" aria-label="Закрыть план">×</button></div><svg id="map-svg" role="img" aria-label="План комнаты и текущее положение" viewBox="0 0 160 280"><path id="map-floor"></path><path id="map-safe"></path><g id="map-player"><path d="M0 -8 L-5 6 L0 3 L5 6 Z"></path></g></svg><span class="map-note">Закрытые двери не открываются</span></aside>
+    <div id="touch-controls" hidden><div id="joystick" role="application" aria-label="Джойстик перемещения"><i id="joystick-thumb"></i></div><span>Движение</span><div class="touch-look-hint">Проведите справа,<br>чтобы осмотреться</div></div>
+
+    <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><span class="eyebrow">КОМНАТА 2 · 3D</span><button id="close-help" class="tool-button" aria-label="Закрыть помощь">×</button></div><h2 id="help-title">Как осмотреть комнату</h2><dl><dt>Перемещение</dt><dd>WASD или стрелки. На сенсорном экране — круглый джойстик слева.</dd><dt>Поворот камеры</dt><dd>Удерживайте кнопку мыши и двигайте её. На телефоне — проведите по свободной части экрана. Кнопка «Управлять мышью» включает свободный поворот без удерживания.</dd><dt>Осмотр целиком</dt><dd>Выберите «Осмотр»: вращайте комнату мышью, приближайте колесом или жестом. Потолок временно скрывается, чтобы интерьер был виден сверху.</dd><dt>Выход и возврат</dt><dd>Esc освобождает курсор. Кнопка ↺ возвращает в начало. Точки обзора слева перемещают к удобным ракурсам.</dd></dl><p class="help-note">Комната открывается из вашей модели. Стены, закрытые двери и предметы ограничивают ходьбу.</p><button id="help-done" class="primary">Понятно</button></dialog>
+    <section id="fatal-error" hidden role="alert"><div class="error-card"><span class="eyebrow">НЕ УДАЛОСЬ ОТКРЫТЬ КОМНАТУ</span><h2>Давайте попробуем ещё раз.</h2><p id="error-message"></p><button id="retry" class="primary">Перезагрузить</button></div></section>
+    <output id="verification-state" hidden aria-hidden="true"></output>
+    <noscript><div class="no-script">Для просмотра комнаты включите JavaScript в браузере.</div></noscript>
+  </main>
+  <!--ROOM_DATA-->
+  <!--ROOM_SCRIPT-->
+</body>
+</html>

@@ -1,0 +1,58 @@
+{
+  "status": "asset_exported_walkthrough_not_created",
+  "source_filename": "room3-designed.blend",
+  "source_sha256_before": "cc0502a557480bfbd3796eb65d13be0a2c6ddae9d30aefd54c76abd958f9324a",
+  "source_sha256_after": "cc0502a557480bfbd3796eb65d13be0a2c6ddae9d30aefd54c76abd958f9324a",
+  "source_unchanged": true,
+  "blender_version": "5.2.3 LTS",
+  "blender_build_hash": "e13b728c6880",
+  "scene": "Scene",
+  "excluded_objects_in_memory_only": [
+    "Cube.029",
+    "Cube.003",
+    "Plane.009",
+    "Plane.010"
+  ],
+  "units": {
+    "system": "METRIC",
+    "scale_length": 1.0
+  },
+  "export_options": {
+    "export_format": "GLB",
+    "use_active_scene": true,
+    "use_visible": true,
+    "use_renderable": true,
+    "export_apply": true,
+    "export_gn_mesh": true,
+    "export_yup": true,
+    "export_materials": "EXPORT",
+    "export_texcoords": true,
+    "export_normals": true,
+    "export_animations": false,
+    "export_cameras": false,
+    "export_lights": false,
+    "export_extras": false,
+    "export_image_format": "AUTO"
+  },
+  "glb": {
+    "size_bytes": 12285476,
+    "sha256": "253ad3c5963412b861b5b96a8f87ad30743de01890d0cbd821917e94fd4d0c80",
+    "mesh_datablocks": 73,
+    "nodes": 73,
+    "material_count": 21,
+    "image_count": 5,
+    "scene_triangles_including_instances": 76890,
+    "external_resource_uris": [],
+    "extensions_used": [
+      "KHR_materials_emissive_strength",
+      "KHR_materials_specular"
+    ],
+    "extensions_required": []
+  },
+  "limitations": [
+    "Visual appearance must be checked in the actual browser viewer.",
+    "No player, navigation, collision geometry, or lighting rig was created.",
+    "Geometry Nodes instance export is marked experimental by Blender; compare evaluated geometry and re-import.",
+    "No material baking or intentional scene redesign was performed."
+  ]
+}

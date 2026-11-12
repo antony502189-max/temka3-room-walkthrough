@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "blender_version": "5.2.3 LTS",
+  "source_sha256": "cc0502a557480bfbd3796eb65d13be0a2c6ddae9d30aefd54c76abd958f9324a",
+  "excluded_objects_in_memory_only": [
+    "Cube.029",
+    "Cube.003",
+    "Plane.009",
+    "Plane.010"
+  ],
+  "glb_sha256": "253ad3c5963412b861b5b96a8f87ad30743de01890d0cbd821917e94fd4d0c80",
+  "checks": {
+    "triangle_count_equal": true,
+    "bounds_within_0_0001_blender_units": true,
+    "material_names_equal": true,
+    "source_unchanged": true
+  },
+  "max_bounds_absolute_error": 9.5367431640625e-07,
+  "source_evaluated": {
+    "triangles": 76890,
+    "mesh_occurrences": 73,
+    "bounds_blender_z_up": {
+      "min": [
+        2.7229630947113037,
+        -15.322260856628418,
+        -0.8618630170822144
+      ],
+      "max": [
+        10.24281120300293,
+        1.1413332223892212,
+        2.398245334625244
+      ]
+    },
+    "materials": [
+      "Ceiling • ivory",
+      "Cove • warm plaster",
+      "Frames • walnut",
+      "LED • warm 3000K",
+      "Material",
+      "Material.001",
+      "Material.002",
+      "Material.003",
+      "Material.006",
+      "Material.007",
+      "Material.009",
+      "Material.010",
+      "Material.011",
+      "Material.012",
+      "Material.013",
+      "Material.015",
+      "Mural • flax",
+      "Mural • memories interpretation",
+      "Mural • wetland",
+      "Photo garland • cable",
+      "Reference • original five documents"
+    ]
+  },
+  "glb_reimport_evaluated": {
+    "triangles": 76890,
+    "mesh_occurrences": 73,
+    "bounds_blender_z_up": {
+      "min": [
+        2.722963333129883,
+        -15.322260856628418,
+        -0.8618630766868591
+      ],
+      "max": [
+        10.242812156677246,
+        1.1413332223892212,
+        2.398245334625244
+      ]
+    },
+    "materials": [
+      "Ceiling • ivory",
+      "Cove • warm plaster",
+      "Frames • walnut",
+      "LED • warm 3000K",
+      "Material",
+      "Material.001",
+      "Material.002",
+      "Material.003",
+      "Material.006",
+      "Material.007",
+      "Material.009",
+      "Material.010",
+      "Material.011",
+      "Material.012",
+      "Material.013",
+      "Material.015",
+      "Mural • flax",
+      "Mural • memories interpretation",
+      "Mural • wetland",
+      "Photo garland • cable",
+      "Reference • original five documents"
+    ]
+  },
+  "not_verified": [
+    "browser appearance",
+    "walk controls",
+    "collision navigation",
+    "macOS installation"
+  ]
+}
